@@ -1565,11 +1565,25 @@ Reverse Proxy 會把背後的機器藏起來，當瀏覽器發出請求到 **git
 
 ## Caching
 
-Load balancing helps you to scale horizontally across servers, but caching will help you better use of the resources you already have.   
+Load balancing helps you to scale horizontally across servers, but caching will help you better use of the resources you already have. Cache take advantage of the locality of reference principle: recently requested data is likely to be requested again.  
 
 * Application Server Cache 
 * Distributed Cache
 * Global Cache
+
+Cache can exist at all levels in architecture but are often found near the front end level.
+
+### Deal with cache misses - global caches and distributed caches
+
+If load balancer randomly distributes requests across different nodes, the same request will go to different nodes, thus increasing cache misses. Then we use global caches or distributed caches to deal with this misses.
+
+### 1. Global Cache
+
+All the nodes are using the same single cache space. This involves adding a server, or file store, where this global cache is faster than your original store. Global cache strategy would become complicated when the number of clients and requests increase, but it is very effective in a case where there is a fixed dataset that needs to be cached. 
+
+![](../../.gitbook/assets/sys_design_global_cache.png)
+
+### 2. Distributed Cache
 
 #### CDN Content Distribution Network
 
