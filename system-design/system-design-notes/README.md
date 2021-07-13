@@ -2010,7 +2010,7 @@ This approach is a bit slower than stream processing, but faster than batch proc
 
 STEP0. **Requirements Gathering**: we start with requirements clarification  
 STEP1. **Functional Requirements \(API\)**: we need to define APIs, what exactly our system is supposed to do.   
-STEP2. **Non-Functional Requirements \(qualities\)**: we then discuss non-functional requirements with the interviewer and figure out what qualities of the system he is most interested in.    
+STEP2. **Non-Functional Requirements \(scale/qualities\)**: we then discuss non-functional requirements with the interviewer and figure out what qualities of the system he is most interested in.    
 STEP3. **High-level Design**: we can now outline a high-level architecture of the system. Then draw some key components on the whiteboard.  
 STEP4. **Detailed Design**: At the next stage we should dive deep into several of those components.   
 STEP5. **Bottlenecks and Tradeoffs**: At the last important step is to discuss bottlenecks and how to deal with them. We should also address tradeoffs.  
@@ -2038,28 +2038,58 @@ STEP5. **Bottlenecks and Tradeoffs**: At the last important step is to discuss b
 
   After these steps, we should be clear on what the scope of the design is. 
 
-* **Non-functional Requirements \(qualities\)**: To define qualities, just know what your options are. Open a list of non-functional requirements on wiki, or just focus on **scalability, availability, and performance**. Pick top 3.
+* **Non-functional Requirements \(scale/qualities\)**:  
+  To define qualities, just know what your options are. Open a list of non-functional requirements on wiki, or just focus on **scalability, availability, and performance**. Pick top 3.
+
   * **Scalability**
   * **Availability**
   * **Performance**
   * And others .... consistency, durability, maintainability and cost. 
+
+  
+  Questions that you can ask the interviewer: 
+
+  * What scale is expected from the system? \(e.g. number of new posts, number of views...
+  * How much storage would we need? It would based on whether we include photos and videos.
+  * What network bandwidth usage are we expecting? This would be crucial in deciding how would we manage traffic and balance load between servers. 
+
 * **High-Level Design**: To outline a high-level design, think about how data gets into the system, try to think the following parts and then draw components on the whiteboard. It's okay to be generic here. Our goal here is to get an understanding of what components to focus on next. 
   * **How data gets In**
   * **How data gets Out**
   * **Where data is stored inside the system**
   * **Try to drive the conversation** While designing specific components, start with data.   Below are the key points that we must dive deeper
   * **Data Model** \(10 mins\)
-  * **API** \(2 mins\)
+  * **API** \(2+2 mins, come back and iterate\)
   * **Diagram** \(15-20 mins\)
   * **Failure** \(remaining time\) 
-* **Detailed Design**: While designing specific components, start with data. 
+* **Detailed Design**:  
+  While designing specific components, start with data. 
+
   * It's all about data \(storage, transfer, processing\)
   * Use fundamental concepts and then **make small incremental improvements**.
   * **Apply relevant technologies**
-  * Dive deeper on Data Model, API, Diagram  ****
+  * Dive deeper on Data Model, API, Diagram 
+
+  Questions that interviewer could ask
+
+  * \[Partition\] Since we'll be storing a huge amount of data, how should we partition our data to distribute it to multiple databases? Should we try to store all data of a user on the same DB? What issue can it cause?
+  * \[Traffic\] How would we handle hot users, who tweet a lot or follow lots of people?
+  * \[DB\] Since user's timeline will contain most recent \(and relevant\) tweets, should we try to store our data in such a way that is optimized to scan latest tweets?
+  * \[Cache\] How much and at which layer should we introduce cache to speed things up?
+  * \[LB\] What components need better LB? 
+
 * **Bottlenecks and Tradeoffs / Failure**
+
   * **Listen carefully to the interviewer** \(what he wants to focus on\) As he sees bottlenecks of our design, in his questions there will be some hints of what those bottlenecks are
   * **Know the tradeoffs** pick and apply the proper one.
+
+  
+  Questions that interviewer could ask
+
+  * Is there any single point of failure in our system? What are we doing to mitigate it?
+  * Do we have enough replicas of the data so that if we lose a few servers, we can still serve our users?
+  * Similarly, do we have enough copies of different services running, such that a few failures will not cause total system shutdown?
+  * How are we monitoring the performance of our service? Do we get alerts whenever critical components fail or their performance degrade?
 
 
 
