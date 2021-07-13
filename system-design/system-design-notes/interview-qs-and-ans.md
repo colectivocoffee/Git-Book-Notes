@@ -9,6 +9,8 @@ Below are some stuff to keep in mind
 * Read-heavy application
 * Each object we store is small \( &lt; 1k \)
 
+We then conclude two DB schema as below
+
 
 
 | URL \(info about URL mappings\) |
