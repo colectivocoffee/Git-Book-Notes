@@ -1589,6 +1589,8 @@ All the nodes are using the same single cache space. This involves adding a serv
 
 CDN is a kind of cache that comes into play for sites serving large amount of media.  
 
+![](../../.gitbook/assets/q_design_twitter%20%281%29.png)
+
 ### Cache Eviction Policies
 
 1. FIFO \(First In First Out\)
