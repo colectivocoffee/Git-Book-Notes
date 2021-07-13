@@ -1583,7 +1583,15 @@ All the nodes are using the same single cache space. This involves adding a serv
 
 ![](../../.gitbook/assets/sys_design_global_cache.png)
 
+First, when a cached response is not found in the cache, the cache itself becomes responsible for retrieving the missing piece of data from the underlying store. Most of the applications tend to use the first type, where the cache itself manages eviction and fetching data.   
+  
+Second, it is the responsibility of request nodes to retrieve any data that is not found in the cache. This type would be useful to deal with a large data from the clients with low cache hit.
+
 ### 2. Distributed Cache
+
+In distributed cache, each of its nodes own part of the cached data. Typically consistent hashing function is used. Why? Because if a request is looking for a certain piece o data, it can quickly know where to look within the distributed cache to determine if that data is available. Therefore, when we need to increase cache space, distributed cache has an advantage to just adding nodes to the request pool.
+
+A disadvantage is to resolve a missing node. To deal with missing node, is to store multiple copies of the data on different nodes.  
 
 #### CDN Content Distribution Network
 
@@ -1599,6 +1607,123 @@ CDN is a kind of cache that comes into play for sites serving large amount of me
 4. MRU \(Most Recently Used\)
 5. LFU \(Least Frequently Used\)
 6. RR \(Random Replacement\)
+
+### Cache Invalidation
+
+While caching is fantastic, it does require some maintenance for keeping cache coherent with the source of truth \(正確的數據\). If the data is modified in the database, it should be invalidated in the cache. Solving this problem is known as cache invalidation. There are three methods are used:
+
+* **Write-through Cache  \(high latency, but complete data consistency\)** Data is written into cache and the corresponding database at the same time. This scheme ensures that nothing will get lost in case of a crash, power failure. However, since every write operation must be done twice before returning success, this scheme has the disadvantage of higher latency for write operations.   
+* **Write-around Cache  \(mid latency, cache miss when requesting recently written data\)** This technique is similar to write through cache, but data is written directly to permanent storage, bypassing the cache. Why do we do this? Because we are trying to reduce cache being flooded with 'Write Operations'. However, there will be cache miss when requesting recently written data. To get this recently written data, it will be much slower where it has to retrieve from permanent storage. 
+* **Write-back Cache \(low latency, high risk of data loss\)** This technique, data is written to cache alone and then success message is sent immediately. The write to the permanent storage is done after specified intervals or under certain conditions. This results in low latency and high throughput for **write-intensive applications**. However, high speed comes with risk of data loss in case of a crash since cache has the only copy.   
+
+### Summary
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Cues/Recall</th>
+      <th style="text-align:left">Cornell Notes Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left">
+        <p></p>
+        <ul>
+          <li>Why do we talk about cache?
+            <br />Why is cache useful?
+            <br />
+          </li>
+          <li>What are the types of cache strategy?
+            <br />
+          </li>
+          <li>When to use global cache?</li>
+          <li>When to use distributed cache?
+            <br />
+          </li>
+          <li>Cache strategy in internet network?
+            <br />
+          </li>
+          <li>How to keep data in cache as accurate data?</li>
+          <li>What are the three different Cache Invalidation strategy?
+            <br />
+          </li>
+          <li>
+            <p>What are the Cache</p>
+            <p>Eviction Policies Strategies?</p>
+          </li>
+        </ul>
+      </td>
+      <td style="text-align:left">
+        <ul>
+          <li>Load balancer extands the application horizontally, whereas cache extands
+            it vertically (better cache, higher speed/low latency)
+            <br />
+          </li>
+          <li>
+            <p>There are two types of caching strategy:</p>
+            <p>(1) Global Cache</p>
+            <p>(2) Distributed Cache
+              <br />
+            </p>
+          </li>
+          <li>Global Cache is good when there are limited number of clients (simple
+            application), easy to manage source of truth. Global cache also has two
+            types of implementations:
+            <br />(1) Clients --- Global Cache --- DB (common)
+            <br />(2) Clients --- Global Cache (large data with low hit)
+            <br />\________ DB
+            <br />
+          </li>
+          <li>Distributed Cache is good when we need to add more cache space. It uses
+            consistent hashing technique to manage caches.
+            <br />
+          </li>
+          <li>Cache strategy in internet network is CDN - Content Delivery Network
+            <br
+            />
+          </li>
+          <li>To keep data in cache as accurate data as possible, we then need <b>&apos;Cache Invalidation&apos;</b> to
+            keep updating data.</li>
+          <li>
+            <p>The three cache invalidation strategy are</p>
+            <ul>
+              <li>Write-through (always two copies)</li>
+              <li>Write-around (skip, then come back)</li>
+              <li>Write-back (come back again)</li>
+            </ul>
+            <p>
+              <br />The three cache invalidation strategy are</p>
+          </li>
+          <li>Cache Eviction Policies are
+            <ul>
+              <li>Least Recently Used (LRU)</li>
+              <li>Most Recently Used (MRU)</li>
+              <li>Least Frequently Used (LFU)</li>
+              <li>Random Replacement (RR)</li>
+            </ul>
+          </li>
+        </ul>
+        <p></p>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p><b>Summary</b>
+        </p>
+        <p>In this Caching chapter, we&apos;ve talked about the following:</p>
+        <p>(1) types of caching - global and distributed</p>
+        <p>(2) 2 types of global cache implementation
+          <br />(3) CDN - internet version of cache
+          <br />(4) types of cache invalidation -
+          <br />write-trough, write-around, write-back</p>
+        <p>(5) Cache Eviction Policies -</p>
+        <p>LRU, MRU, LFU, RR</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## Messaging System/Partitioner Service and Partitions
 
