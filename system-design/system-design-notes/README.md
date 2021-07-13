@@ -143,11 +143,12 @@ def uploadVideo()
 def shareVideo()
 def viewVideo()
 
-# what's the parameter for APIs? -> videoId 
-def xxxVideo(videoId)
+# what's the parameter for APIs? -> videoId
+# who vieweed the video? who uploaded the video? -> userName 
+def xxxVideo(videoId, userName)
 # combine upload/share/view? -> add eventType parameter
 # Rename method: upload+share+view -> process
-def processVideo(videoId, eventType)
+def processVideo(videoId, userName, eventType)
 
 #----
 # sys should have total view count 
@@ -162,7 +163,8 @@ def getStats(videoId, eventType, function)
 
 #### \(2\) API Returns
 
-What should this API returns? Generally speaking, the name of this function will be what this function should be returned. 
+What should this API returns? Generally speaking, the name of this function will be what this function should be returned.   
+Otherwise, we should return Error Code/Exception.
 
 ```python
 # return uploaded/shared/view video -> return processed video object
