@@ -2008,6 +2008,12 @@ Then we have a big cluster of machines, for example AWS EC2, that retrieve messa
 Then EC2 reads a corresponding batch of events from S3 thru SQS and processes each event.  
 This approach is a bit slower than stream processing, but faster than batch processing.
 
+### Q: How do we detect and prevent abuse?
+
+Interviewer Q: For tinyUrl Interview question, we would probably have a case where the user abuse the service. How do we prevent them?  
+
+Ans: We can limit users through their `api_dev_key`, how many URL they can create or access in a certain time with allocated quota. This `api_dev_key`is a API developer key of a registered account. 
+
 ## Final Summary
 
 STEP0. **Requirements Gathering**: we start with requirements clarification  
@@ -2055,15 +2061,31 @@ STEP5. **Bottlenecks and Tradeoffs**: At the last important step is to discuss b
   * How much storage would we need? It would based on whether we include photos and videos.
   * What network bandwidth usage are we expecting? This would be crucial in deciding how would we manage traffic and balance load between servers. 
 
-* **High-Level Design**: To outline a high-level design, think about how data gets into the system, try to think the following parts and then draw components on the whiteboard. It's okay to be generic here. Our goal here is to get an understanding of what components to focus on next. 
+* **High-Level Design**:  
+  To outline a high-level design, think about how data gets into the system, try to think the following parts and then draw components on the whiteboard. It's okay to be generic here.  
+  Our goal here is to get an understanding of what components to focus on next. 
+
   * **How data gets In**
   * **How data gets Out**
   * **Where data is stored inside the system**
   * **Try to drive the conversation** While designing specific components, start with data.   Below are the key points that we must dive deeper
   * **Data Model** \(10 mins\)
+  * **Database Schema Design** 
   * **API** \(2+2 mins, come back and iterate\)
   * **Diagram** \(15-20 mins\)
-  * **Failure** \(remaining time\) 
+  * **Failure** \(remaining time\)
+
+#### Topics that we should cover in high-level design
+
+|  |
+| :--- |
+| API Design - method names, params, return values |
+| Database Schema Design/Data Model |
+| Draw Flow Diagram |
+
+  
+
+
 * **Detailed Design**:  
   While designing specific components, start with data. 
 
