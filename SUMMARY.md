@@ -166,7 +166,7 @@
 ## System Design
 
 * [System Design Notes](system-design/system-design-notes/README.md)
-  * [Computer Networking](system-design/system-design-notes/http-status-code.md)
+  * [System & Network](system-design/system-design-notes/http-status-code.md)
   * [ACID Meaning](system-design/system-design-notes/acid-meaning.md)
   * [Web Related](system-design/system-design-notes/web-related.md)
   * [Interview Qs and Ans](system-design/system-design-notes/interview-qs-and-ans.md)

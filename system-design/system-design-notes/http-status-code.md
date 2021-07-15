@@ -1,4 +1,78 @@
-# Computer Networking
+# System & Network
+
+## System Behaviors
+
+以下為System在不同狀況下，有可能產生的Behaviors。我們分成三部分討論：  
+\(1\) Network Behaviors  
+\(2\) Nodes Behaviors  
+\(3\) Timing Behaviors
+
+### 1. Network Behavior
+
+* **Reliable** \(perfect\) links
+* **Fair-Loss** links
+* **Arbitrary** links
+
+### 2. Node Behavior
+
+A node that is not faulty is called 'correct node'.  
+
+* **Crash-Stop** \(fail-stop\)
+* **Crash-Recovery** \(fail-recovery\)
+* **Byzantine** \(fail-arbitrary\)
+
+### 3. Timing Behavior
+
+* Synchronous
+* Partially Synchronous
+* Asynchronous
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left"></th>
+      <th style="text-align:left">Summary</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p><b>Network Behavior</b>
+        </p>
+        <ul>
+          <li>Reliable</li>
+          <li>Fair-Loss</li>
+          <li>Arbitrary</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p><b>Nodes Behavior</b>
+        </p>
+        <ul>
+          <li>Crash-Stop</li>
+          <li>Crash-Recovery</li>
+          <li>Byzantine</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td style="text-align:left"></td>
+      <td style="text-align:left">
+        <p><b>Timing Behavior</b>
+        </p>
+        <ul>
+          <li>Synchronous</li>
+          <li>Partially Synchronous</li>
+          <li>Asynchronous</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
 ## 1. Latency and Bandwith
 
