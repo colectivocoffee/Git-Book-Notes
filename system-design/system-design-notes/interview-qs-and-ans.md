@@ -45,3 +45,8 @@ Encoding Actual URL. We can compute **unique hash** by the following techniques
 * MD5
 * SHA256
 
+{% hint style="info" %}
+注意Hash Functions & Encryption的不同  
+MD5 & SHA256 是用於Hash Functions，雖然可以拿來做encryption，但遠遠不足，容易被破解。
+{% endhint %}
+
