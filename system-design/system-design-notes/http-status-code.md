@@ -9,23 +9,40 @@
 
 ### 1. Network Behavior
 
+Assume bidirectional point-to-point communication between nodes with one of the following network behavior:
+
 * **Reliable** \(perfect\) links Message is received, message may be reordered.             &lt; ---- \|
 * **Fair-Loss** links                                                                                  \| retry + de-duplicate Messages may be lost, duplicated, or reordered.                ---- \| If you keep retrying, a message eventually gets through. &lt;---\|cryptographic protocol
 * **Arbitrary** links                                                                                 \|  **TLS \(Transport** A malicious adversary may interfere with messages.        -----\|     **Layer Security\)** \(eavesdrop, modify, drop, spoof, replay\)
 
+Network Partition: some links dropping/delaying all messages for extended period of time.
+
 ### 2. Node Behavior
 
-A node that is not faulty is called 'correct node'.  
+A node that is not faulty is called '`correct node`', otherwise the node could be faulty. Each node executes a specified algorithm, with the following node behavior: 
 
-* **Crash-Stop** \(fail-stop\)
-* **Crash-Recovery** \(fail-recovery\)
-* **Byzantine** \(fail-arbitrary\)
+* **Crash-Stop** \(fail-stop\) A node is faulty if it crashes, and never gets recovered.
+* **Crash-Recovery** \(fail-recovery\) A node may crash at any moment, losing its in-memory state. But it may resume executing sometime later.
+* **Byzantine** \(fail-arbitrary\) A node is faulty if it behaves abnormal/deviates from the algorithm. Such as crashing, malicious behavior.
 
-### 3. Timing Behavior
+### 3. Timing/Synchrony Behavior
 
-* Synchronous
-* Partially Synchronous
-* Asynchronous
+Between network and nodes, timing part will have the following behavior:  
+
+* **Synchronous** Message latency is not greater than a known upper bound. Nodes execute algorithm at a known speed.
+* **Partially Synchronous** Sometime async, sometime sync.
+* **Asynchronous** Messages can be delayed arbitrarily. Nodes can pause execution arbitrarily.  No timing guarantees at all.
+
+**What kind of situations could increase asynchrony/latency? sync -&gt; async**  
+In network:  
+\(1\) Message loss requiring **retry**  
+\(2\) **Congestion/contention** causing queuing  
+\(3\) **Network/route reconfiguration**   
+  
+In nodes:  
+\(1\) Operating system **scheduling issue**   \(e.g. priority inversion\)  
+\(2\) Stop-the-world **garbage collection pauses**  
+\(3\) Page faults, swap, thrashing
 
 <table>
   <thead>
@@ -69,6 +86,16 @@ A node that is not faulty is called 'correct node'.
           <li>Partially Synchronous</li>
           <li>Asynchronous</li>
         </ul>
+        <p>What kind of issues could increase latency?</p>
+        <p>In network
+          <br />(1) message loss, need retry</p>
+        <p>(2) network congestion</p>
+        <p>(3) network reconfig</p>
+        <p></p>
+        <p>In nodes</p>
+        <p>(1) scheduling/priority issue
+          <br />(2) garbage collection caused pause
+          <br />(3) page faults...</p>
       </td>
     </tr>
   </tbody>
