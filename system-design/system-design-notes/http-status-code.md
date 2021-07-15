@@ -9,9 +9,9 @@
 
 ### 1. Network Behavior
 
-* **Reliable** \(perfect\) links
-* **Fair-Loss** links
-* **Arbitrary** links
+* **Reliable** \(perfect\) links Message is received, message may be reordered.
+* **Fair-Loss** links Messages may be lost, duplicated, or reordered. If you keep retrying, a message eventually gets through.
+* **Arbitrary** links A malicious adversary may interfere with messages.  \(eavesdrop, modify, drop, spoof, replay\)
 
 ### 2. Node Behavior
 
