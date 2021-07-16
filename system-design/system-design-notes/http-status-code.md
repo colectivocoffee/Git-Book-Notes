@@ -101,7 +101,7 @@ In nodes:
   </tbody>
 </table>
 
-## 1. Latency and Bandwith
+## 2-1. Latency and Bandwidth
 
 ### Latency
 
@@ -122,13 +122,13 @@ Bandwith is **data volume per unit time.**
 * Home broadband: ~ 10 Mb/s
 * Hard drives in a van:  50 TB/box ~ 1Gb/s 
 
-## 2. HTTP and TCP
+## 2-2. HTTP and TCP
 
 **How does TCP send data via the Internet?**  
 TCP sends network packets \(each packet is a small size.\)   
 HTTP uses TCP underneath. \(Request\) TCP breaks down these big messages, into small network packets that are small enough that the network can deliver them. And then on the recipient side \(Response\), TCP puts all of the network packets back again to give us one large chunk of bytes.
 
-## 3. RPC - Remote Procedure Call  
+## 2-3. RPC - Remote Procedure Call  
 
 Ideally, RPC makes a call to a remote function look the same as a local function call. 
 
@@ -136,6 +136,8 @@ Ideally, RPC makes a call to a remote function look the same as a local function
 
 **Service Oriented Architecture \(SOA\) / "microservices"**  
 SOA meaning splitting a large software application into multiple services \(on multiple nodes\) that communicate via RPC. 
+
+
 
 ## HTTP Status Code
 
@@ -147,5 +149,29 @@ SOA meaning splitting a large software application into multiple services \(on m
 
 {% embed url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" %}
 
+## 3-1. Replication
 
+What does replication means?  
+\# Keeping a copy of the same data on multiple nodes \(e.g. DBs, filesystems, caches\)  
+\# A node that has a copy of the data is called a **replica**.  
+\# If some replicas are faulty, others are still accessible  
+\# Replication spread load across many replicas
+
+> Note: Learn RAID \(Redundant Array of Independent Disks\)
+
+### Retrying State Updates
+
+### Idempotence \(冪等性\)   \*\*\*\*\*很重要\*\*\*\*\*
+
+**用於：API Design  
+  
+定義，什麼是Idempotent?**  
+If you apply a function once to some argument, it has the same effect as applying twice or three times or any number of times.  
+  
+**\* Not idempotent:** increment a counter --&gt; ****$${f(likeCount) = likeCount + 1}$$   
+  
+**\* Idempotent:** add an element to a set --&gt;$${f(likeSet) = likeSet \cup userID}$$   
+  
+**為什麼要Idempotent?**   
+目的為deduplication。使其在retry但沒ack情況下，減少系統所產生的duplication。
 
