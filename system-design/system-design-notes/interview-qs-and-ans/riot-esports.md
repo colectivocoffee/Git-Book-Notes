@@ -42,3 +42,8 @@ Riot LoL uses **UDP protocol** to send data. Professional players play on a hybr
 
 Latency and Packet Loss
 
+## What's Next?
+
+Riot’s Esports Technology Group will be attempting an industry first - remote transmission utilizing a new compression codec codenamed JPEG-XS. Known internationally as [ISO/IEC 21122](https://www.iso.org/standard/74535.html), JPEG-XS promises vastly improved video compression quality and sub-1ms latency, a 93% decrease from the current industry standard!  
+The total bandwidth is with impressive 2.7 gigabits per second between LA and Worlds.
+
