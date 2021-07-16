@@ -122,13 +122,19 @@ Bandwith is **data volume per unit time.**
 * Home broadband: ~ 10 Mb/s
 * Hard drives in a van:  50 TB/box ~ 1Gb/s 
 
-## 2-2. HTTP and TCP
+## 2-2. How HTTP uses TCP
 
 **How does TCP send data via the Internet?**  
 TCP sends network packets \(each packet is a small size.\)   
 HTTP uses TCP underneath. \(Request\) TCP breaks down these big messages, into small network packets that are small enough that the network can deliver them. And then on the recipient side \(Response\), TCP puts all of the network packets back again to give us one large chunk of bytes.
 
-## 2-3. RPC - Remote Procedure Call  
+## 2-3. TCP vs UDP
+
+如何決定要用TCP vs UDP? 有以下關鍵點
+
+* **Low Latency重要** \(e.g. real-time gaming like LoL, DOTA\) 如果low latency在傳輸中重要，那就使用UDP。 UDP丟包不會再重發，因此不會有回傳的ack阻塞channel。 
+* 
+## 2-4. RPC - Remote Procedure Call  
 
 Ideally, RPC makes a call to a remote function look the same as a local function call. 
 
