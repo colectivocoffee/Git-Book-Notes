@@ -139,7 +139,9 @@ SOA meaning splitting a large software application into multiple services \(on m
 
 
 
-## HTTP Status Code
+## 2-9. HTTP
+
+### HTTP Status Code
 
 1. Informational responses \(`100`–`199`\)
 2. Successful responses \(`200`–`299`\)
@@ -169,7 +171,6 @@ What does replication means?
 If you apply a function once to some argument, it has the same effect as applying twice or three times or any number of times.  
   
 **\* Not idempotent:** increment a counter --&gt; ****$${f(likeCount) = likeCount + 1}$$   
-  
 **\* Idempotent:** add an element to a set --&gt;$${f(likeSet) = likeSet \cup userID}$$   
   
 **為什麼要Idempotent?**   
