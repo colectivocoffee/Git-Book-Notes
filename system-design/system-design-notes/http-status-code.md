@@ -184,3 +184,12 @@ If you apply a function once to some argument, it has the same effect as applyin
 * **At-least-once** semantics retry request until ack\(acknowledged\), may repeat update
 * **Exactly-once** semantics retry + idemopotence or deduplication
 
+### 3-4. Reconcile Replicas
+
+利用timestamp來記錄先後順序，使其在inconsistent時，能自動更新。
+
+### 3-5. Concurrent Writes by Different Clients
+
+* Last-Writer Wins
+* Multi-Value Register
+
