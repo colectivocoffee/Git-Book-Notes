@@ -130,6 +130,8 @@ HTTP uses TCP underneath. \(Request\) TCP breaks down these big messages, into s
 
 ## 2-3. TCP vs UDP
 
+**TCP -**   
+**UDP - User Data Protocol**  
 如何決定要用TCP vs UDP? 有以下關鍵點
 
 * **Low Latency重要** \(e.g. real-time gaming like LoL, DOTA\) 如果low latency在傳輸中重要，那就使用UDP。 UDP丟包不會再重發，因此不會有回傳的ack阻塞channel。 
