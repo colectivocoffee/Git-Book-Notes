@@ -255,7 +255,8 @@ Q: The following non-func req should be met
             <br />The use of CAP Theorem
             <ul>
               <li>Consistency --&gt; Same Data, scalable</li>
-              <li>Availability --&gt; Highly available</li>
+              <li>Availability --&gt; Highly available
+                <br />( = fault tolerant, &#x5373;&#x6709;&#x4E9B;node&#x58DE;&#x6389;&#x4F46;&#x9084;&#x662F;&#x4E0D;&#x5F71;&#x97FF;&#x4F7F;&#x7528;)</li>
               <li>Partition Tolerance --&gt; High performant</li>
             </ul>
           </li>
