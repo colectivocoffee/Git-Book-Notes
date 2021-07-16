@@ -151,7 +151,7 @@ SOA meaning splitting a large software application into multiple services \(on m
 
 {% embed url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" %}
 
-## 3-1. Replication
+## 3. Replication
 
 What does replication means?  
 \# Keeping a copy of the same data on multiple nodes \(e.g. DBs, filesystems, caches\)  
@@ -163,7 +163,7 @@ What does replication means?
 
 ### Retrying State Updates
 
-### Idempotence \(冪等性\)   \*\*\*\*\*很重要\*\*\*\*\*
+### 3-2. Idempotence \(冪等性\)   \*\*\*\*\*很重要\*\*\*\*\*
 
 **用於：API Design  
   
@@ -175,4 +175,12 @@ If you apply a function once to some argument, it has the same effect as applyin
   
 **為什麼要Idempotent?**   
 目的為deduplication。使其在retry但沒ack情況下，減少系統所產生的duplication。
+
+### 3-3. Retry Semantics
+
+有以下幾種辦法Retry
+
+* **At-most-once** semantics: send request, don't retry, update may not happen
+* **At-least-once** semantics retry request until ack\(acknowledged\), may repeat update
+* **Exactly-once** semantics retry + idemopotence or deduplication
 
