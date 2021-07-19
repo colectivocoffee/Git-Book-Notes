@@ -209,6 +209,14 @@ If you apply a function once to some argument, it has the same effect as applyin
 
 利用timestamp來記錄先後順序，使其在inconsistent時，能自動更新。
 
+#### Problem on Idempotency - While Adding & Removing
+
+在ClientA, ClientB同時修改DB時，Idempotent會發生問題，如下圖。因此，我們需要利用**Timestamp + Tombstone**的方式，來確保event先後順序和狀態。
+
+![f\(f\(x\)\) = f\(x\) but f\(g\(f\(x\)\)\) =/= g\(f\(x\)\) &#x5373; +1 =/= +1-1+1](../../.gitbook/assets/sys_design_idempotent_problem.png)
+
+![Tombstone to solve adding/removing problem](../../.gitbook/assets/sys_design_idempotency_tombstone.png)
+
 ### 3-5. Tech Library to Solve Idempotency
 
 There's a general purpose idempotency library called "**Orpheus**". Orpheus is the Greek mythological hero who was able to orchestrate and charm all living things.   
@@ -226,6 +234,8 @@ Orpheus Idemptency Library consists with the following concepts:
 
 * Last-Writer Wins
 * Multi-Value Register
+
+### 3-6. 
 
 
 
