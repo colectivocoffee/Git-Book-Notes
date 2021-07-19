@@ -162,7 +162,7 @@ SOA meaning splitting a large software application into multiple services \(on m
 
 {% embed url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" %}
 
-## 3. Node&Sync - Why Replication?
+## 3. Node&Sync: Why Replication?
 
 What does replication means?  
 \# Keeping a copy of the same data on multiple nodes \(e.g. DBs, filesystems, caches\)  
@@ -179,6 +179,7 @@ What does replication means?
 **Why do we need to achieve consistency?**  
 When clients make the same call/click repeatedly, the results should be the same. Meaning multiple request should have the same effect as making a single request. \(aka "exactly-once delivery"\)  
   
+**How do we achieve eventual consistency? \(後面會說明\)**  
 There are three common techniques to achieve eventual consistency:   
 \(1\) **read-repair**  
 \(2\) **write-repair**  
@@ -245,6 +246,35 @@ Orpheus Idemptency Library consists with the following concepts:
 \(2\) Idempotency information is read and written from **sharded master database \(for consistency\)**  
 \(3\) Database transactions are combined in different parts of the codebase to ensure **atomicity**, using Java lambdas.   
 \(4\) Error responses are classified as "retryable" or "non-retryable"
+
+## 3. Node&Sync: Solving Prob of Faults - Quorum \(法定人數\)
+
+**為什麼需要Quorum?**   
+通常Node數量一多，便有機率會出現node crash的情況。Node Crash會造成inconsistency = data not consistent。此時便需要利用Quorum來決定數據的真實性。
+
+**Probability of Node Faults**  
+當Node/Replicas數量越多，就  
+\(1\) 越有可能出現One Node Crash --&gt; decrease consistency  
+\(2\) 越不可能出現All Nodes Crash  --&gt; increase reliability
+
+![](../../.gitbook/assets/sys_design_quorum_prob.png)
+
+### 3-7. How Quorum Works 
+
+![Quorum \(2 out of 3\)](../../.gitbook/assets/sys_design_quorum_details.png)
+
+利用投票的方式，來決定哪個數據是真實的。Quorum有三種方式解決eventual consistency的問題  
+\(1\) Read Repair  
+\(2\) Write Repair  
+\(3\) Asynchronous Repair
+
+#### Read Repair
+
+利用Client Read的方式，Client回傳正確值給inconsistent DB，來修復eventual consistency。  
+Update \(t1,v1\). Why?   
+Because \(t1,v1\) is more recent than \(t0, v0\) since t0 &lt; t1. Client helps propagate \(t1,v1\) to other replicas.
+
+![](../../.gitbook/assets/sys_design_quorum_read_repair.png)
 
 
 
