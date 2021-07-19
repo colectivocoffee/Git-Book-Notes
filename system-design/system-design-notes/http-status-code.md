@@ -101,9 +101,11 @@ In nodes:
   </tbody>
 </table>
 
-## 2-1. Latency and Bandwidth
+## 2. Network
 
-### Latency
+### 2-1. Latency and Bandwidth
+
+#### Latency
 
 **What is Latency \(延遲性\)?**  
 Latency is 1\) **time until a message arrives**.   
@@ -113,7 +115,7 @@ Latency is 1\) **time until a message arrives**.
 * One continent to another: ~ 100ms
 * Hard drives in a van: ~ 1 day
 
-### Bandwith
+#### Bandwith
 
 **What is Bandwith \(可乘載的量\)?**  
 Bandwith is **data volume per unit time.**
@@ -122,13 +124,13 @@ Bandwith is **data volume per unit time.**
 * Home broadband: ~ 10 Mb/s
 * Hard drives in a van:  50 TB/box ~ 1Gb/s 
 
-## 2-2. How HTTP uses TCP
+### 2-2. How HTTP uses TCP
 
 **How does TCP send data via the Internet?**  
 TCP sends network packets \(each packet is a small size.\)   
 HTTP uses TCP underneath. \(Request\) TCP breaks down these big messages, into small network packets that are small enough that the network can deliver them. And then on the recipient side \(Response\), TCP puts all of the network packets back again to give us one large chunk of bytes.
 
-## 2-3. TCP vs UDP
+### 2-3. TCP vs UDP
 
 **TCP -**   
 **UDP - User Data Protocol**  
@@ -137,18 +139,18 @@ HTTP uses TCP underneath. \(Request\) TCP breaks down these big messages, into s
 * **Low Latency重要** \(e.g. real-time gaming like LoL, DOTA\) 如果low latency在傳輸中重要，那就使用UDP。 UDP丟包不會再重發，因此不會有回傳的ack阻塞channel。 
 * **High Consistency重要**  資料傳輸一致 \(e.g. financial transaction system\)  
 
-## 2-4. RPC - Remote Procedure Call  
+### 2-4. RPC - Remote Procedure Call  
 
 Ideally, RPC makes a call to a remote function look the same as a local function call. 
 
-### RPC in Enterprise Systems
+#### RPC in Enterprise Systems
 
 **Service Oriented Architecture \(SOA\) / "microservices"**  
 SOA meaning splitting a large software application into multiple services \(on multiple nodes\) that communicate via RPC. 
 
 
 
-## 2-9. HTTP
+### 2-9. HTTP
 
 ### HTTP Status Code
 
@@ -171,6 +173,16 @@ What does replication means?
 > Note: Learn RAID \(Redundant Array of Independent Disks\)
 
 ### Retrying State Updates
+
+### 3-1. Achieve Consistency
+
+**Why do we need to achieve consistency?**  
+When clients make the same call/click repeatedly, the results should be the same. Meaning multiple request should have the same effect as making a single request. \(aka "exactly-once delivery"\)  
+  
+There are three common techniques to achieve eventual consistency:   
+\(1\) read-repair  
+\(2\) write-repair  
+\(3\) asynchronous repair
 
 ### 3-2. Idempotence \(冪等性\)   \*\*\*\*\*很重要\*\*\*\*\*
 
@@ -196,6 +208,19 @@ If you apply a function once to some argument, it has the same effect as applyin
 ### 3-4. Reconcile Replicas
 
 利用timestamp來記錄先後順序，使其在inconsistent時，能自動更新。
+
+### 3-5. Tech Library to Solve Idempotency
+
+There's a general purpose idempotency library called "Orpheus". Orpheus is the Greek mythological hero who was able to orchestrate and charm all living things.   
+  
+Orpheus Library Benefits:   
+\* offers low latency  
+  
+Orpheus Idemptency Library consists with the following concepts:  
+\(1\) **Idempotency key** is passed into the framework, representing a idempotent request.  
+\(2\) Idempotency information is read and written from **sharded master database \(for consistency\)**  
+\(3\) Database transactions are combined in different parts of the codebase to ensure **atomicity**, using Java lambdas.   
+\(4\) Error responses are classified as "retryable" or "non-retryable"
 
 ### 3-5. Concurrent Writes by Different Clients
 
