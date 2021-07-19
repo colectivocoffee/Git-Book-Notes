@@ -211,7 +211,7 @@ If you apply a function once to some argument, it has the same effect as applyin
 
 ### 3-5. Tech Library to Solve Idempotency
 
-There's a general purpose idempotency library called "Orpheus". Orpheus is the Greek mythological hero who was able to orchestrate and charm all living things.   
+There's a general purpose idempotency library called "**Orpheus**". Orpheus is the Greek mythological hero who was able to orchestrate and charm all living things.   
   
 Orpheus Library Benefits:   
 \* offers low latency  
