@@ -162,7 +162,7 @@ SOA meaning splitting a large software application into multiple services \(on m
 
 {% embed url="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" %}
 
-## 3. Replication
+## 3. Node&Sync - Why Replication?
 
 What does replication means?  
 \# Keeping a copy of the same data on multiple nodes \(e.g. DBs, filesystems, caches\)  
@@ -180,9 +180,9 @@ What does replication means?
 When clients make the same call/click repeatedly, the results should be the same. Meaning multiple request should have the same effect as making a single request. \(aka "exactly-once delivery"\)  
   
 There are three common techniques to achieve eventual consistency:   
-\(1\) read-repair  
-\(2\) write-repair  
-\(3\) asynchronous repair
+\(1\) **read-repair**  
+\(2\) **write-repair**  
+\(3\) **asynchronous repair**
 
 ### 3-2. Idempotence \(冪等性\)   \*\*\*\*\*很重要\*\*\*\*\*
 
@@ -228,9 +228,9 @@ We **reconcile replicas** by periodically communicate among themselves like belo
 
 ![Concurrent Writes](../../.gitbook/assets/sys_design_idempotency_cc_write.png)
 
-問題：當不同的Clients\(Client1, Client2\)想要同時修改databaseA, databaseB時，會出現**Concurrent Write**的情況。如何解決？下面兩種是常見的方法：
+問題：當不同的Clients\(Client1, Client2\)想要同時修改databaseA, databaseB時，會出現**Concurrent Write**的情況。Concurrent Write如何解決？下面兩種是常見的方法：
 
-* Last-Writer Wins \(LWW\) - 有可能會data loss
+* Last-Writer Wins \(LWW\) - 但有可能會data loss
 * Multi-Value Register
 
 ### 3-6. Tech Library to Solve Idempotency
