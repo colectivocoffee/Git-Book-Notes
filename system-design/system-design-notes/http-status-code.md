@@ -217,7 +217,23 @@ If you apply a function once to some argument, it has the same effect as applyin
 
 ![Tombstone to solve adding/removing problem](../../.gitbook/assets/sys_design_idempotency_tombstone.png)
 
-### 3-5. Tech Library to Solve Idempotency
+"Remove x" doesn't actually remove x: it labels x with "false" to indicate it is invisible \(a tombstone\). Every record has **logical timestamp\(t1,t2\)** of last write.   
+  
+How to check latest DB state between different DBs?   
+We **reconcile replicas** by periodically communicate among themselves like below.
+
+![](../../.gitbook/assets/sys_design_idempotency_reconcile_replica.png)
+
+### 3-5. Concurrent Writes by Different Clients
+
+![Concurrent Writes](../../.gitbook/assets/sys_design_idempotency_cc_write.png)
+
+問題：當不同的Clients\(Client1, Client2\)想要同時修改databaseA, databaseB時，會出現**Concurrent Write**的情況。如何解決？下面兩種是常見的方法：
+
+* Last-Writer Wins \(LWW\) - 有可能會data loss
+* Multi-Value Register
+
+### 3-6. Tech Library to Solve Idempotency
 
 There's a general purpose idempotency library called "**Orpheus**". Orpheus is the Greek mythological hero who was able to orchestrate and charm all living things.   
   
@@ -229,13 +245,6 @@ Orpheus Idemptency Library consists with the following concepts:
 \(2\) Idempotency information is read and written from **sharded master database \(for consistency\)**  
 \(3\) Database transactions are combined in different parts of the codebase to ensure **atomicity**, using Java lambdas.   
 \(4\) Error responses are classified as "retryable" or "non-retryable"
-
-### 3-5. Concurrent Writes by Different Clients
-
-* Last-Writer Wins
-* Multi-Value Register
-
-### 3-6. 
 
 
 
