@@ -263,6 +263,19 @@ Orpheus Idemptency Library consists with the following concepts:
 
 ![Quorum \(2 out of 3\)](../../.gitbook/assets/sys_design_quorum_details.png)
 
+What do we do to achieve **Read After Write Consistency**?  
+Use **Read and Write Quorum.**  
+意即Read Quorum去看一批nodes，Write Quorum去看另外一批nodes。只要majority quorums同意，那就是正確值。  
+  
+Write Quorum: write is acknowledged by $$w$$ replicas  
+Read Quorum: read is acknowledged by $$r$$ replicas  
+and $$r + w > n$$   
+  
+**Majority Quorum**: $$r = w = \frac {n+1} {2} $$ for n = 3, 5, 7...  
+Reads Quorum can tolerate $$n - r$$ unavailable replicas   \(e.g. 5 - 2\)  
+Writes Quorum can tolerate $$n - w$$ unavailable replicas  \(e.g. 5 - 2\)  
+
+
 利用投票的方式，來決定哪個數據是真實的。Quorum有三種方式解決eventual consistency的問題  
 \(1\) Read Repair  
 \(2\) Write Repair  
