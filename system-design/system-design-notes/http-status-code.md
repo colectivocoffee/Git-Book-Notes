@@ -289,7 +289,9 @@ Because \(t1,v1\) is more recent than \(t0, v0\) since t0 &lt; t1. Client helps 
 
 ![](../../.gitbook/assets/sys_design_quorum_read_repair.png)
 
+### 3-8. Utilize Broadcast Protocols - State Machine Replication
 
+We can use broadcast protocols to do replication. 
 
 Reference  
 网络游戏 采用的是tcp协议还是udp协议 [https://www.zhihu.com/question/23356564](https://www.zhihu.com/question/23356564)
