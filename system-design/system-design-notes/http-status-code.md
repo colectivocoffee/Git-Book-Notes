@@ -319,7 +319,7 @@ for u in delivering u through FIFO-total order broadcast:
 \(1\) ****Cannot update state immediately, have to wait for delivery through broadcast  
 \(2\) Need fault-tolerant total order broadcast
 
-#### Database **Leader-Follower** **Replica**
+### 3-9. Database **Leader-Follower** **Replica**
 
 
 
