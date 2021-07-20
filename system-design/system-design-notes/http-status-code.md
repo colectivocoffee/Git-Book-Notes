@@ -319,6 +319,16 @@ for u in delivering u through FIFO-total order broadcast:
 \(1\) ****Cannot update state immediately, have to wait for delivery through broadcast  
 \(2\) Need fault-tolerant total order broadcast
 
+**Replication Using Different Broadcasts**  
+Updates f and g are commutative where f\(g\(x\)\) = g\(f\(x\)\)
+
+|  | broadcast | assumptions about state update function |
+| :--- | :--- | :--- |
+| 1\(strong\) | total order | deterministic \(SMR\) |
+| 2 | causal | deterministic, concurrent updates commute |
+| 3 | reliable | deterministic, all updates commute |
+| 4\(weak\) | best-effort | deterministic, commutative, idempotent,  tolerates message loss |
+
 ### 3-9. Database **Leader-Follower** **Replica**
 
 
