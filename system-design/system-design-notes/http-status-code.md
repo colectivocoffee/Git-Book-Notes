@@ -291,8 +291,40 @@ Because \(t1,v1\) is more recent than \(t0, v0\) since t0 &lt; t1. Client helps 
 
 ### 3-8. Utilize Broadcast Protocols - State Machine Replication
 
-We can use broadcast protocols to do replication. 
+**We can use broadcast protocols to do replication**.   
+The way we do broadcast is to use total order broadcast, where every node **delivers the** **same messages** in the **same order**.
 
-Reference  
+#### **State Machine Replication \(SMR\):**
+
+* FIFO-total order broadcast every update to all replicas \(same update in same order\)
+* Replica delivers update message: apply it to own state
+* **Applying an update is** **deterministic**
+* Replica is a **state machine**: starts in fixed initial state, goes through the same sequence of state transitions in the same order --&gt; all replicas end up in the same state  ![](../../.gitbook/assets/sys_design_quorum_broadcast2.png)   ![](../../.gitbook/assets/sys_design_quorum_broadcast.png) 
+
+```python
+State Machine Replication 
+
+for u in request to perform update u:
+    send u via FIFO-total order broadcast
+
+for u in delivering u through FIFO-total order broadcast:
+    update state using arbitrary deterministic logic    
+```
+
+**Ideas** that uses State Machine Replication Methodology:  
+\(1\) serializable transactions   
+\(2\) blockchains, distributed ledgers, smart contracts  
+  
+**Limitations:**  
+\(1\) ****Cannot update state immediately, have to wait for delivery through broadcast  
+\(2\) Need fault-tolerant total order broadcast
+
+#### Database **Leader-Follower** **Replica**
+
+
+
+
+
+**Reference**  
 网络游戏 采用的是tcp协议还是udp协议 [https://www.zhihu.com/question/23356564](https://www.zhihu.com/question/23356564)
 
