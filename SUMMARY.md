@@ -167,7 +167,7 @@
 
 * [System Design Notes](system-design/system-design-notes/README.md)
   * [System, Node, Network](system-design/system-design-notes/http-status-code.md)
-  * [ACID Meaning](system-design/system-design-notes/acid-meaning.md)
+  * [ACID & CAP](system-design/system-design-notes/acid-meaning.md)
   * [Web Related](system-design/system-design-notes/web-related.md)
   * [Interview Qs and Ans](system-design/system-design-notes/interview-qs-and-ans/README.md)
     * [Riot Esports](system-design/system-design-notes/interview-qs-and-ans/riot-esports.md)
