@@ -113,7 +113,8 @@ def dfs(self, matrix, x, y, visited):
 ### 2. DFS Iterative 模板
 
 ```python
-stack []
+stack = []
+stack.append(起始點)
 visited = []
 
 while len(stack) != 0:
