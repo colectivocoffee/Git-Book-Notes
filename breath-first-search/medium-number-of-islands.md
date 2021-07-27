@@ -42,7 +42,7 @@ Space complexity: O \(m\*n\) in the case whole grid is filled with ‘1’.
 
 ## Code
 
-#### 1. BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommend\)
+### 1. BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommend\)
 
 ```python
 #     col0,1,2 
@@ -138,41 +138,47 @@ def valid_node(self,x,y):
     return grid[x][y]
 ```
 
-#### 3. Iterative DFS + boolean matrix: O\(m\*n\)/O\(m\*n\) \(Not Recommended\)
+### 3. Iterative DFS + boolean matrix: O\(m\*n\)/O\(m\*n\) \(Not Recommended\)
 
 DFS雖然可以Accepted，但DFS容易深度比較深，會導致Stack Overflow。
 
 ```python
 def numIslands(self, grid: List[List[str]]) -> int:
+    
     if len(grid) == 0 or len(grid[0]) == 0:
         return 0
     
-    cols = len(grid[0])
-    rows = len(grid)
-    visited = [cols*[False] for _ in range(rows)]
     islands = 0
-    
+    rows = len(grid)
+    cols = len(grid[0])
+    visited = [ cols*[False] for _ in range(rows)]
+        
     for i in range(rows):
         for j in range(cols):
             if visited[i][j] == False and grid[i][j] == '1':
-                self.dfs(grid, x, y, visited)
-                islands += 1
+                self.dfs(grid, i, j, visited)
+                islands += 1 
     return islands
     
 def dfs(self, grid, x, y, visited):
     
-    visited[x][y] = True    # 易錯點：要先mark原點visited，否則會無限recursion下去
-    DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
-    for delta_x, delta_y in DIRECTIONS:
-        next_x = x + delta_x
-        next_y = y + delta_y
-        if 0 <= next_x < len(grid) and 0 <= next_y < len(grid[0]):
-            if visited[next_x][next_y] == False and grid[next_x][next_y] == '1':
-                self.dfs(grid, next_x, next_y, visited)
+    stack = []
+    stack.append((x,y))
+    DIRECTIONS = [(1,0), (0,1), (-1,0), (0,-1)]
     
+    while stack:
+        x,y = stack.pop()           
+        # neighbor in neighbors
+        for d_x, d_y in DIRECTIONS:
+            next_x = d_x + x
+            next_y = d_y + y
+            if 0 <= next_x < len(grid) and 0 <= next_y < len(grid[0]):
+                if visited[next_x][next_y] == False and grid[next_x][next_y] == '1':
+                    stack.append((next_x, next_y))
+                    visited[next_x][next_y] = True
 ```
 
-#### 4. Recursive DFS: 
+### 4. Recursive DFS: 
 
 ```python
 # 此解法省略了 visited matrix，直接mark as '0'
@@ -216,4 +222,42 @@ def is_valid(self, grid, x, y):
 #### 類似Matrix題型
 
 1. Word Search \(Use DFS\)
+
+### 待整理
+
+#### 1. BFS
+
+
+
+#### 2. DFS 
+
+```python
+def numIslands(self, grid: List[List[str]]) -> int:
+    if len(grid) == 0 or len(grid[0]) == 0:
+        return 0
+    
+    cols = len(grid[0])
+    rows = len(grid)
+    visited = [cols*[False] for _ in range(rows)]
+    islands = 0
+    
+    for i in range(rows):
+        for j in range(cols):
+            if visited[i][j] == False and grid[i][j] == '1':
+                self.dfs(grid, x, y, visited)
+                islands += 1
+    return islands
+    
+def dfs(self, grid, x, y, visited):
+    
+    visited[x][y] = True    # 易錯點：要先mark原點visited，否則會無限recursion下去
+    DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
+    for delta_x, delta_y in DIRECTIONS:
+        next_x = x + delta_x
+        next_y = y + delta_y
+        if 0 <= next_x < len(grid) and 0 <= next_y < len(grid[0]):
+            if visited[next_x][next_y] == False and grid[next_x][next_y] == '1':
+                self.dfs(grid, next_x, next_y, visited)
+    
+```
 
