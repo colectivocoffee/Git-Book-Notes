@@ -186,6 +186,8 @@ def dfs(self, grid, x, y, visited):
 
 ### 4. Recursive DFS: O\(m\*n\)/O\(m\*n\)
 
+跟Iterative DFS比，少了visited matrix來記走過路徑。
+
 ```python
 # 此解法省略了 visited matrix，直接mark as '0'
 def numIslands(self, grid: List[List[str]]) -> int:
