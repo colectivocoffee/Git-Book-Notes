@@ -140,6 +140,9 @@ def valid_node(self,x,y):
 
 ### 3. Iterative DFS + boolean matrix: O\(m\*n\)/O\(m\*n\) \(Not Recommended\)
 
+Time Complexity: O\(m\*n\) m is the rows, n is the cols  
+Space Complexity: O\(m\*n\) worst-case when the grid is filled with lands, **DFS will go m\*n deep**
+
 DFS雖然可以Accepted，但DFS容易深度比較深，會導致Stack Overflow。
 
 ```python
