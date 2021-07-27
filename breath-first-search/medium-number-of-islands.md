@@ -42,7 +42,7 @@ Space complexity: O \(m\*n\) in the case whole grid is filled with ‘1’.
 
 ## Code
 
-### 1. BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommend\)
+### 1. BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommended\)
 
 Time Complexity: O\(m\*n\) m is the rows, n is the cols  
 Space Complexity: O\(min\(m,n\)\) worst-case when the grid is filled with lands, **size of queue will go up to min\(m,n\)**
