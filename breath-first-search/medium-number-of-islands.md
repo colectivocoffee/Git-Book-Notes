@@ -57,10 +57,11 @@ def numIslands(self, grid: List[List[str]]) -> int:
     if len(grid) == 0 or len(grid[0]) == 0:
         return 0
     
-    visited = [ len(grid[0])*[False] for _ in range(len(grid)) ]
-    islands = 0
     rows = len(grid)
-    cols = len(grid[0]) 
+    cols = len(grid[0])     
+    visited = [ cols*[False] for _ in range(rows) ]
+    islands = 0
+
     
     for i in range(rows):   # 易錯點：先過row0，再過col0
         for j in range(cols):
@@ -74,7 +75,8 @@ def numIslands(self, grid: List[List[str]]) -> int:
     
 def bfs(self, grid, x, y, visited):
     
-    queue = dequeue([(x,y)])   # 易錯點
+    queue = collections.deque()   
+    queue.append((x,y))    # (x,y)易錯點
     DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
     
     while len(queue) != 0:
@@ -84,7 +86,7 @@ def bfs(self, grid, x, y, visited):
             next_x = delta_x + x
             next_y = delta_y + y
             
-            # next_x & next_y should be within boundary
+            # within boundary
             if 0 <= next_x < len(grid) and 0 <= next_y < len(grid[0]):
                 if visited[next_x][next_y] == False and grid[next_x][next_y] == '1':
                     queue.append((next_x, next_y))  # 易錯點
