@@ -235,8 +235,6 @@ def is_valid(self, grid, x, y):
 
 #### 1. BFS
 
-
-
 #### 2. DFS 
 
 ```python
