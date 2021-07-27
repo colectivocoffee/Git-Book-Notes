@@ -10,7 +10,7 @@ Queue 用於BFS
 
 #### How to Optimize BFS? 
 
-如果在面試中問到“如何優化BFS”，那Bi-directional BFS 幾乎是標準答案了。
+如果在面試中問到“如何優化BFS”，那**Bi-directional BFS** 幾乎是標準答案了。
 
 ### 1. BFS w/o Level Order 模板 
 
