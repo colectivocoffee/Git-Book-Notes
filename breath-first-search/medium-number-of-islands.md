@@ -38,7 +38,7 @@ space complexity是跟著queue size走的，所以如果grid本身全是'1'的�
 Time Complexity: O\(m\*n\) we are visiting each element in the 2D array once  
 Space complexity: O \(m\*n\) in the case whole grid is filled with ‘1’.
 
-### 3. Union Find
+### 3. Union Find: O\(m\*n\)/O\(m\*n\)
 
 ## Code
 
