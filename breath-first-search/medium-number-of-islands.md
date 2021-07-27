@@ -184,7 +184,7 @@ def dfs(self, grid, x, y, visited):
                     visited[next_x][next_y] = True
 ```
 
-### 4. Recursive DFS: 
+### 4. Recursive DFS: O\(m\*n\)/O\(m\*n\)
 
 ```python
 # 此解法省略了 visited matrix，直接mark as '0'
