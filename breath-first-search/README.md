@@ -72,9 +72,9 @@ while len(queue) 不為0 :
 
    	# 3.使用 while 进入队列循环，直到搜索完毕
    	# {
-   	#   4.取出一个节点
-   	#   5.
-          放入这个节点周围的节点
+   	#   4.取出一个节点head
+   	#   5.從head看周圍的節點neighbors，一個一個看
+          放入这个节点周围的节点，即把neightbor放入queue&seen
    	# }
   ```
 
