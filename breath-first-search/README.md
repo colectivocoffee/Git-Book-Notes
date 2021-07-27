@@ -8,6 +8,8 @@
 
 Queue 用於BFS
 
+![](../.gitbook/assets/bfs_in_2d.jpeg)
+
 #### How to Optimize BFS? 
 
 如果在面試中問到“如何優化BFS”，那**Bi-directional BFS** 幾乎是標準答案了。
