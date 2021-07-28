@@ -136,14 +136,16 @@ class Solution:
         first_end = intervals[0][1]
         heapq.heappush(free_rooms, first_end)
         
-        for item in intervals[1:]:
+        for item in intervals[1:]: #從第二個開始
             
             # all meeting rooms are occupied, 
             # meaning end time is greater than first start time on min heap
+            # item[0]是meeting start time
             if item[0] >= free_rooms[0]: 
                 heapq.heappop(free_rooms)
             
             # update free rooms by end time
+            # item[1]是meeting end time
             heapq.heappush(free_rooms, item[1])
         
         return len(free_rooms)
