@@ -206,11 +206,11 @@ def numIslands(self, grid: List[List[str]]) -> int:
     return islands
 
 def dfs(self, grid, x, y):
+    # check boundary, should not go beyond
     if self.is_valid(grid,x,y):
         return 
-    # mark as visited
-    grid[x][y] = '0'
-    
+    # mark (x,y) as visited
+    grid[x][y] = '0'    
     self.dfs(grid, x+1, y)
     self.dfs(grid, x, y+1)
     self.dfs(grid, x-1, y)
