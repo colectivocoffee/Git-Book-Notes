@@ -263,6 +263,8 @@ Orpheus Idemptency Library consists with the following concepts:
 
 ![Quorum \(2 out of 3\)](../../.gitbook/assets/sys_design_quorum_details.png)
 
+> #### Data in DB needs to be consistent
+
 What do we do to achieve **Read After Write Consistency**?  
 Use **Read and Write Quorum.**  
 意即Read Quorum去看一批nodes，Write Quorum去看另外一批nodes。只要majority quorums同意，那就是正確值。  
@@ -330,6 +332,24 @@ Updates f and g are commutative where f\(g\(x\)\) = g\(f\(x\)\)
 | 4\(weak\) | best-effort | deterministic, commutative, idempotent,  tolerates message loss |
 
 ### 3-9. Database **Leader-Follower** **Replica**
+
+
+
+## Consensus
+
+Total order broadcast algorithm == Consensus
+
+## Consistency
+
+### Consensus和Atomic Commit的差異
+
+|  | Consensus | Automic commit |
+| :--- | :--- | :--- |
+|  | 共識，數量達到即可 | 成功或失敗，not able to tolerate any faulty nodes |
+|  | One or more nodes propose a value | Every node votes whether to commit or abort |
+|  | Any one of the proposed values is decided | Must commit if all nodes vote to commit; must abort if &gt;= 1 nodes vote to abort |
+|  | Crashed nodes can be tolerated, as long as a quorum is working | Must abort if a participating node crashes |
+| 應用例子 | Paxos, Multi-Paxos, Raft | Two-phase Commit \(2-PC\) |
 
 
 
