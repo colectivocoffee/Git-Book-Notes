@@ -209,6 +209,10 @@ def dfs(self, grid, x, y):
     # check boundary, should not go beyond
     if self.is_valid(grid,x,y):
         return 
+#    # alternative way of checking boundary
+#    if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or grid[x][y] == '0':
+#       return    
+        
     # mark (x,y) as visited
     grid[x][y] = '0'    
     self.dfs(grid, x+1, y)
