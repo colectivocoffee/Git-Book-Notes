@@ -138,7 +138,7 @@ class Solution:
         
         for item in intervals[1:]: #從第二個開始
             
-            # all meeting rooms are occupied, 
+            # 所有房間已滿, 
             # meaning end time is greater than first start time on min heap
             # item[0]是meeting start time
             if item[0] >= free_rooms[0]: 
