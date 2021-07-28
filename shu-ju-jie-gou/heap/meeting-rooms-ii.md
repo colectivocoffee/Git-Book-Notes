@@ -134,6 +134,7 @@ class Solution:
         
         # first end time
         first_end = intervals[0][1]
+        # minHeap存的是end_time_for_latest_meeting
         heapq.heappush(free_rooms, first_end)
         
         for item in intervals[1:]: #從第二個開始
