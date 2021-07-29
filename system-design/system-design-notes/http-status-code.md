@@ -353,11 +353,23 @@ Total order broadcast algorithm == Consensus
 
 ## 2-Phase-Commit
 
-為什麼需要2 Phase Commit？  
-使用2 Phase Commit來確保consistency\(一致性\)來防止crashes造成數據不同的問題。 
+**為什麼需要2 Phase Commit？**  
+使用2 Phase Commit來確保consistency\(一致性\)來防止crashes造成數據不同的問題。下面是兩種consistency會出現的問題  
+\(1\) a node crashes --&gt; data inconsistent   \[解決辦法\] all nodes either commit or abort  
+\(2\) concurrency/multiple nodes are reading and writing concurrently --&gt; data inconsistent  
+
 
 ![](../../.gitbook/assets/sys_design_2_phase_commit.png)
 
+### 2. Linearizability \(strongest consistency\)
+
+## Race Condition
+
+\(印象中\)  
+Race Condition發生在GET operation時，需要得到data，但常常Data is being inconsistent。  
+例如 at 1:04pm: GET --&gt; fieldA: \[apple, banana, orange\]  
+         at 1:05pm: GET --&gt; fieldA: \[apple, kiwi, pineapple\]  
+         at 1:06pm: GET --&gt; fieldA: \[apple, banana, orange\]  
 
 
 **Reference**  
