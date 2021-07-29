@@ -351,7 +351,9 @@ Total order broadcast algorithm == Consensus
 |  | Crashed nodes can be tolerated, as long as a quorum is working | Must abort if a participating node crashes |
 | 應用例子 | Paxos, Multi-Paxos, Raft | Two-phase Commit \(2-PC\) |
 
+## 2-Phase-Commit
 
+![](../../.gitbook/assets/sys_design_2_phase_commit.png)
 
 
 
