@@ -353,6 +353,9 @@ Total order broadcast algorithm == Consensus
 
 ## 2-Phase-Commit
 
+為什麼需要2 Phase Commit？  
+使用2 Phase Commit來確保consistency\(一致性\)來防止crashes造成數據不同的問題。 
+
 ![](../../.gitbook/assets/sys_design_2_phase_commit.png)
 
 
