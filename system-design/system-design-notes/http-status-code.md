@@ -361,7 +361,11 @@ Total order broadcast algorithm == Consensus
 
 ![](../../.gitbook/assets/sys_design_2_phase_commit.png)
 
-### 2. Linearizability \(strongest consistency\)
+## Consistency Models for Distributed Systems
+
+### 1. Linearizability \(strongest consistency\)
+
+### 2. Eventual Consistency \(medium consistency\)
 
 ## Race Condition
 
