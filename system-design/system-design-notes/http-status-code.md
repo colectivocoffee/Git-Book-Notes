@@ -363,9 +363,64 @@ Total order broadcast algorithm == Consensus
 
 ## Consistency Models for Distributed Systems
 
-### 1. Linearizability \(strongest consistency\)
+### 1. Linearizability \(strongest consistency, slowest\)
 
-### 2. Eventual Consistency \(medium consistency\)
+### 2. Eventual Consistency \(medium consistency, faster\)
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align:left">Techniques</th>
+      <th style="text-align:left">Communication Req.</th>
+      <th style="text-align:left">Synchrony Req.</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align:left"><b>atomic commit</b>
+      </td>
+      <td style="text-align:left">
+        <p>all participating nodes</p>
+        <p>(all nodes)</p>
+      </td>
+      <td style="text-align:left">partially synchronous</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>consensus,</b>
+        </p>
+        <p><b>total order broadcast,</b>
+        </p>
+        <p><b>linearizable CAS</b> 
+        </p>
+      </td>
+      <td style="text-align:left">quorum
+        <br />(majority of nodes)</td>
+      <td style="text-align:left">partially synchronous</td>
+    </tr>
+    <tr>
+      <td style="text-align:left"><b>linearizable get/set</b>
+      </td>
+      <td style="text-align:left">
+        <p>quorum</p>
+        <p>(majority of nodes)</p>
+      </td>
+      <td style="text-align:left">asynchronous</td>
+    </tr>
+    <tr>
+      <td style="text-align:left">
+        <p><b>eventual consistency, </b>
+        </p>
+        <p><b>causal broadcast, </b>
+        </p>
+        <p><b>FIFO broadcast</b>
+        </p>
+      </td>
+      <td style="text-align:left">local replica only</td>
+      <td style="text-align:left">asynchronous</td>
+    </tr>
+  </tbody>
+</table>
 
 ## Race Condition
 
