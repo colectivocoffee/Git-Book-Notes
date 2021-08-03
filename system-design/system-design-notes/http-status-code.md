@@ -363,9 +363,18 @@ Total order broadcast algorithm == Consensus
 
 ## Consistency Properties
 
-**1. Serializable**      transaction isolation, either commit or fail  
-**2. Linearizable**     reads and writes  
-**3. Many Shards**   each holding a subset of data \(consistent hashing\), atomic commit of transactions across shards
+**1. Serializable**        
+&gt; transaction isolation, either commit or aborted  
+&gt; \[sol\] 2-Phase locking for serializability  
+  
+**2. Linearizable**       
+&gt; reads and writes  
+&gt; 2-Phase Commit for cross-shard atomicity  
+  
+**3. Many Shards**     
+&gt; ****each holding a subset of data \(consistent hashing\), atomic commit of transactions across shards  
+&gt; \[sol\] state machine replication \(Paxos\) within a shard  
+
 
 ## Consistency Models for Distributed Systems
 
