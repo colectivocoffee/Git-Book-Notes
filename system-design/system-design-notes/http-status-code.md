@@ -361,6 +361,12 @@ Total order broadcast algorithm == Consensus
 
 ![](../../.gitbook/assets/sys_design_2_phase_commit.png)
 
+## Consistency Properties
+
+**1. Serializable**      transaction isolation, either commit or fail  
+**2. Linearizable**     reads and writes  
+**3. Many Shards**   each holding a subset of data \(consistent hashing\), atomic commit of transactions across shards
+
 ## Consistency Models for Distributed Systems
 
 ### 1. Linearizability \(strongest consistency, slowest\)
