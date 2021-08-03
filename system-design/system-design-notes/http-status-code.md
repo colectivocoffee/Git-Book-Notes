@@ -373,6 +373,10 @@ Total order broadcast algorithm == Consensus
       <th style="text-align:left">Techniques</th>
       <th style="text-align:left">Communication Req.</th>
       <th style="text-align:left">Synchrony Req.</th>
+      <th style="text-align:left">
+        <p>strength</p>
+        <p>of assumptions</p>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -384,6 +388,10 @@ Total order broadcast algorithm == Consensus
         <p>(all nodes)</p>
       </td>
       <td style="text-align:left">partially synchronous</td>
+      <td style="text-align:left">
+        <p>strongest</p>
+        <p>(&#x6700;&#x96E3;&#x9054;&#x6210;)</p>
+      </td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -397,6 +405,7 @@ Total order broadcast algorithm == Consensus
       <td style="text-align:left">quorum
         <br />(majority of nodes)</td>
       <td style="text-align:left">partially synchronous</td>
+      <td style="text-align:left">|</td>
     </tr>
     <tr>
       <td style="text-align:left"><b>linearizable get/set</b>
@@ -406,6 +415,7 @@ Total order broadcast algorithm == Consensus
         <p>(majority of nodes)</p>
       </td>
       <td style="text-align:left">asynchronous</td>
+      <td style="text-align:left">|</td>
     </tr>
     <tr>
       <td style="text-align:left">
@@ -418,6 +428,7 @@ Total order broadcast algorithm == Consensus
       </td>
       <td style="text-align:left">local replica only</td>
       <td style="text-align:left">asynchronous</td>
+      <td style="text-align:left">weakest</td>
     </tr>
   </tbody>
 </table>
