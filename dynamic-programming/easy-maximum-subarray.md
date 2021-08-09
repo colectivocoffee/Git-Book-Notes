@@ -156,8 +156,6 @@ def maxSubArray(self, nums: List[int]) -> int:
     # Our helper function is designed to solve this problem for
     # any array - so just call it using the entire input!
     return findBestSubarray(nums, 0, len(nums) - 1)
-
-
 ```
 
 #### 4. Greedy
