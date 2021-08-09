@@ -68,7 +68,7 @@ Transfer Function: `local_max = max(local_max + nums[i], nums[i])`
 
 ## Code
 
-#### 1.DP \(Sequence DP\)
+#### 1.DP \(Sequence DP\): O\(n\)/O\(n\)
 
 {% tabs %}
 {% tab title="Python" %}
@@ -90,7 +90,7 @@ def maxSubArray(self, nums: List[int]) -> int:
 {% endtab %}
 {% endtabs %}
 
-#### 2. DP\(Space Optimized\)
+#### 2. DP\(Space Optimized\): O\(n\)/O\(1\)
 
 {% tabs %}
 {% tab title="Python" %}
