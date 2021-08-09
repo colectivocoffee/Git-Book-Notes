@@ -55,7 +55,7 @@ Transfer Function: `local_max = max(local_max + nums[i], nums[i])`
 > 注意：\(1\)初始值 `global_max = local_max = nums[0]` 為 init state f\[0\]，  
 > \(2\)邊界條件 i 為 range\(1, len\(nums\)\)
 
-### 3. Divide and Conquer - Binary Search: O\(nlogn\)/O\(logn\)
+### 3. Divide and Conquer - Merge Sort, Binary Search: O\(nlogn\)/O\(logn\)
 
 依照follow up要求，如果要divide and conquer，那大概只有Binary Search可以用了。一般來說Binary Search可以讓Time Complexity: O\(logn\)，但是此題還是要用merge sort遍歷一整個list，因此還是O\(nlogn\)。  
 [Binary Search 參考答案](https://leetcode.com/problems/maximum-subarray/discuss/20371/Java-Dynamic-Programming-or-Binary-Search)
@@ -68,7 +68,7 @@ Transfer Function: `local_max = max(local_max + nums[i], nums[i])`
 
 ## Code
 
-#### 1.DP \(Sequence DP\): O\(n\)/O\(n\)
+### 1.DP \(Sequence DP\): O\(n\)/O\(n\)
 
 {% tabs %}
 {% tab title="Python" %}
@@ -90,7 +90,7 @@ def maxSubArray(self, nums: List[int]) -> int:
 {% endtab %}
 {% endtabs %}
 
-#### 2. DP\(Space Optimized\): O\(n\)/O\(1\)
+### 2. DP\(Space Optimized\): O\(n\)/O\(1\)
 
 {% tabs %}
 {% tab title="Python" %}
@@ -119,7 +119,7 @@ def maxSubArray(self, nums: List[int]) -> int:
 {% endtab %}
 {% endtabs %}
 
-#### 3. Binary Search: O\(nlogn\) / O\(logn\)
+### 3. Merge Sort, Recursive Binary Search: O\(nlogn\) / O\(logn\)
 
 ```python
 def maxSubArray(self, nums: List[int]) -> int:
@@ -158,7 +158,7 @@ def maxSubArray(self, nums: List[int]) -> int:
     return findBestSubarray(nums, 0, len(nums) - 1)
 ```
 
-#### 4. Greedy
+### 4. Greedy
 
 {% tabs %}
 {% tab title="Python" %}
