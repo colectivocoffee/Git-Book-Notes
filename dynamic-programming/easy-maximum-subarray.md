@@ -28,9 +28,13 @@ If you have figured out the O\(_n_\) solution, try coding another solution using
   
 **Define the State:**  
 \(1\)最後一步: `global_max = nums[i] + prev_max`  
-\(2\)Subproblem: `max(nums[i] + prev_max, nums[i])` or `nums[i] + max(prev_max,0)`  
-**Transfer Function:**  
- ``**`f[i] = max(nums[i] + f[i-1], nums[i])`** where i = 0, len\(nums\)-1  
+\(2\)Subproblem:   
+`max(nums[i] + prev_max, nums[i])` or   
+`nums[i] + max(prev_max,0)`  
+**Transfer Function:  
+`f[i] = max(nums[i] + f[i-1], nums[i])`** where i = 0, len\(nums\)-1  
+**`f[i] = nums[i] + max(f[i-1], 0)`**  
+                                                ^ 加上nums\[i\] or 從頭開始算  
 **Init state and set Boundaries:**  
 Init: f\[0\] = 0  
 Boundaries: 0~len\(nums\)  
