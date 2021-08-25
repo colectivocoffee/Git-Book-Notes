@@ -12,7 +12,16 @@ Two Pointers解法的精髓，是透過**兩個指針控制一個區間\(window\
 
 ### **\(1\) Sliding Window 模板**
 
-使用Sliding Window必要條件：數據如果是Int, 必須都是positive Integers
+使用Sliding Window必要條件：數據如果是Int, 必須都是**positive Integers**
+
+### 什麼時候用Sliding Window？Sliding Window侷限？
+
+{% hint style="info" %}
+Ans: 題目的input nums是linear data structure，並且**nums是contiguous或是其他黏在一起的組合**\(substring, subarray, anagram, permutation...\)  
+  
+Ans: 數據如果是Int, 必須都是**positive Integers。**  
+如果是負數，Sliding window就會重複算答案。
+{% endhint %}
 
 ```python
 Sliding Window毛毛蟲移法：
@@ -73,7 +82,7 @@ def slidingWindow(self, s):
 
 要如何判斷這題是否可以用Sliding Window解題呢？
 
-很多sliding window的題，都是在linear data structure的框架下，並且答案是要求要contigous或是其他黏在一起的組合\(substring, subarray, anagram, permutation...\)
+很多sliding window的題，都是在linear data structure的框架下，並且**答案是要求要contiguous或是其他黏在一起的組合**\(substring, subarray, anagram, permutation...\)
 
 The Sliding Window pattern is used to perform a required operation on a specific window size of a given array or linked list, such as finding the longest subarray containing all 1s. Sliding Windows start from the 1st element and keep shifting right by one element and adjust the length of the window according to the problem that you are solving. In some cases, the window size remains constant and in other cases, the sizes grow or shrink.
 
