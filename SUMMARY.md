@@ -59,6 +59,7 @@
   * [\[Medium\] 3 Sum / 3 Sum Closest](two-pointers/medium-3-sum.md)
   * [\[Easy\] Two Sum / Two Sum Less Than K / Sorted Array](two-pointers/easy-two-sum.md)
 * [Binary Search](binary-search/README.md)
+  * [\[Medium\] Time Based Key-Value Store](binary-search/medium-time-based-key-value-store.md)
   * [\[Easy\] First Bad Version](binary-search/easy-first-bad-version.md)
   * [\[Easy\] Intersection of Two Arrays / \[Easy\] Intersection II](binary-search/easy-medium-intersection-of-two-arrays.md)
   * [\[Medium\] Find First and Last Position of Element in Sorted Array](binary-search/medium-find-first-and-last-position-of-element-in-sorted-array.md)
