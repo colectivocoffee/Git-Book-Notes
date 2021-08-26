@@ -173,6 +173,7 @@ while len(stack) != 0:
 什麼時候用Topo Sort?  
 Ans: 通常是在Graph裡。   
 1. 需要完成Scheduling問題，並且有先後順序要求時。  
+     The canonical application of topological sorting is in [scheduling](https://en.wikipedia.org/wiki/Job_shop_scheduling) a sequence of jobs or tasks  based on their [dependencies](https://en.wikipedia.org/wiki/Dependency_graph).  
 2. 需要檢測DAG，即是否有環\(cycle dependency\)。
 {% endhint %}
 
@@ -236,4 +237,8 @@ Dijkstra限制：Weight必須為正數。
 * [ ] Binary Tree Serialization
 * [ ] Build Post Office II
 * [ ] Alien Dictionary
+
+#### Reference
+
+1. [https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf](https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf) \(1\) Topological Sort \(ver. 1 & 2\): Gunning for linear time…  \(2\) Finding Shortest Paths        ➧ Breadth-First Search        ➧ Dijkstra’s Method
 
