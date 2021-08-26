@@ -15,7 +15,7 @@
 
 ---
 
-* [BFS/DFS](breath-first-search/README.md)
+* [BFS/DFS/Graph](breath-first-search/README.md)
   * [\[Medium\] Word Search II](breath-first-search/medium-word-search-ii.md)
   * [\[Medium\] Word Search](breath-first-search/medium-word-search.md)
   * [\[Medium\] Minimum Height Trees](breath-first-search/medium-minimum-height-trees.md)

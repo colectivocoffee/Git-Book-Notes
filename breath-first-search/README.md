@@ -1,4 +1,4 @@
-# BFS/DFS
+# BFS/DFS/Graph
 
 ![](../.gitbook/assets/bfs_and_dfs.jpeg)
 
