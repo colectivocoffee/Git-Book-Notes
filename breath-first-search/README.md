@@ -240,5 +240,6 @@ Dijkstra限制：Weight必須為正數。
 
 #### Reference
 
-1. [https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf](https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf) \(1\) Topological Sort \(ver. 1 & 2\): Gunning for linear time…  \(2\) Finding Shortest Paths        ➧ Breadth-First Search        ➧ Dijkstra’s Method
+1. Graph \(all kinds of graph\): [https://courses.cs.washington.edu/courses/cse326/09sp/lectures/21-graphs.pdf](https://courses.cs.washington.edu/courses/cse326/09sp/lectures/21-graphs.pdf) \(1\) Weighted Graph \(2\) Directed Graph ... 
+2. Topo Sort: [https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf](https://courses.cs.washington.edu/courses/cse326/03wi/lectures/RaoLect20.pdf) \(1\) Topological Sort \(ver. 1 & 2\): Gunning for linear time…  \(2\) Finding Shortest Paths        ➧ Breadth-First Search        ➧ Dijkstra’s Method
 
