@@ -157,7 +157,26 @@ while len(stack) != 0:
    	return image # 终止返回
   ```
 
-## Topological Sort
+## Graph Theory
+
+只要是牽扯到Graph的問題，可以往下面三個方向想：
+
+1. Topological Sort --&gt; 用來解決Job Scheduling問題
+2. BFS --&gt; 
+3. Dijkstra --&gt; 用來解決有Weight情況下，找Shortest Path問題
+
+## 1. Topological Sort
+
+### 什麼時候用Topo Sort?
+
+{% hint style="info" %}
+什麼時候用Topo Sort?  
+Ans: 通常是在Graph裡。   
+1. 需要完成Scheduling問題，並且有先後順序要求時。  
+2. 需要檢測DAG，即是否有環\(cycle dependency\)。
+{% endhint %}
+
+#### Steps
 
 1.統計所有點的In-degree，並初始化Topological序列為空。  
 2.將所有In-degree = 0的點，也就是沒有任何依賴的點，放到BFS Queue中。  
@@ -196,6 +215,10 @@ While the graph is not empty :
     0. Check if the graph has no cycle  
     1. Find all nodes that have no arrows going into them \(In-degree = 0\)  O\(N+E\)  
     2. Delete it, output it until all the nodes are gone.
+
+## 2. Dijkstra & BFS
+
+Dijkstra限制：Weight必須為正數。
 
 
 
