@@ -1,6 +1,6 @@
 # \[Medium\] Time Based Key-Value Store
 
-## Time Based Key-Value Store \(1479/166\)
+## [Time Based Key-Value Store        \(1479/166 google common\)](https://leetcode.com/problems/time-based-key-value-store/)
 
 Design a time-based key-value data structure that can store multiple values for the same key at different time stamps and retrieve the key's value at a certain timestamp.
 
