@@ -79,7 +79,7 @@ def numIslands(self, grid: List[List[str]]) -> int:
 def bfs(self, grid, x, y, visited):
     
     queue = collections.deque()   
-    queue.append((x,y))    # (x,y)易錯點
+    queue.append([(x,y)])    # (x,y)易錯點， 
     DIRECTIONS = [(1,0),(0,1),(-1,0),(0,-1)]
     
     while len(queue) != 0:
