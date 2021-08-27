@@ -60,8 +60,8 @@ def numIslands(self, grid: List[List[str]]) -> int:
     if len(grid) == 0 or len(grid[0]) == 0:
         return 0
     
-    rows = len(grid)
-    cols = len(grid[0])     
+    rows = len(grid)       # height
+    cols = len(grid[0])    # width    
     visited = [ cols*[False] for _ in range(rows) ]
     islands = 0
 
