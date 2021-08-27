@@ -42,7 +42,7 @@ Space complexity: O \(m\*n\) in the case whole grid is filled with ‘1’.
 
 ## Code
 
-### 1. BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommended\)
+### 1. Iter BFS + boolean matrix: O\(m\*n\) / O\(min\(m,n\)\) \(Recommended\)
 
 Time Complexity: O\(m\*n\) m is the rows, n is the cols  
 Space Complexity: O\(min\(m,n\)\) worst-case when the grid is filled with lands, **size of queue will go up to min\(m,n\)**
@@ -96,9 +96,9 @@ def bfs(self, grid, x, y, visited):
                     visited[next_x][next_y] = True  # mark as visited
 ```
 
-#### 2. BFS + boolean set : O\(m\*n\)/O\(min\(m,n\)\)
+### 2. Iter BFS + boolean set : O\(m\*n\)/O\(min\(m,n\)\)
 
-needs to revisit
+基本還是用Iterative BFS，和上面不同的是，我們把判斷句額外寫成一個function，並且把visited = bolean array -&gt; set\(\)，把boolean array -&gt; set可以減少space complexity。
 
 ```python
 def numIslands(self, grid: List[List[str]]) -> int:
@@ -107,15 +107,14 @@ def numIslands(self, grid: List[List[str]]) -> int:
     
     visited = set()
     islands = 0
-    cols = len(grid[0])
-    rows = len(grid)
+    cols = len(grid[0])   # width
+    rows = len(grid)      # height
     
-    for i in range(cols):
-        for j in range(rows):
+    for i in range(rows):
+        for j in range(cols):
             if grid[i][j] == '1' and (i,j) not in visited:
                 self.bfs(self, grid, i, j, visited)
-                islands += 1
-    
+                islands += 1 
     return islands 
 
 def bfs(self, grid, x, y, visited):
@@ -126,19 +125,19 @@ def bfs(self, grid, x, y, visited):
         for delta_x, delta_y in DIRECTIONS:
             next_x = x + delta_x
             next_y = y + delta_y
-            if not self.valid_node(next_x,next_y) and grid[next_x][next_y] == '0':
+            if not self.valid_node(next_x,next_y):
                 continue
             # if all conditions satisfy from above, 
             # then mark the node as true and append to queue.
             queue.append((next_x, next_y))
             visited.append((next_x, next_y))
             
-def valid_node(self,x,y):
-    if x > len(grid[0]) or y > len(grid):
+def valid_node(self, grid, x, y, visited):
+    if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]):
         return False
-    if visited[x][y] == True:
+    if (x, y) in visited:
         return False
-    return grid[x][y]
+    return grid[x][y] == '1'
 ```
 
 ### 3. Iterative DFS + boolean matrix: O\(m\*n\)/O\(m\*n\) \(Not Recommended\)
