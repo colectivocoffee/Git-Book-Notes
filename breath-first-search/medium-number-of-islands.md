@@ -271,5 +271,7 @@ def dfs(self, grid, x, y, visited):
     
 ```
 
-## \(follow up\) Number of Closed Islands
+## \(follow up\) 1254 Number of Closed Islands
+
+
 
