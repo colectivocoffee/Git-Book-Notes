@@ -305,6 +305,10 @@ Output: 1
 Time Complexity: O\(m\*n\) for dfs search entire matrix  
 Space Complexity: O\(m\*n\) for visited boolean array
 
+> 思路：找到一個島`grid[i][j] == 0`時，看  
+> \(1\)是否visited過: visiteed\[i\]\[j\] == False --&gt; GOOD  
+> \(2\)是否為closed island: DFS closed == True --&gt; GOOD
+
 ```python
 def closedIsland(self, grid: List[List[int]]) -> int:
     width = len(grid[0])
