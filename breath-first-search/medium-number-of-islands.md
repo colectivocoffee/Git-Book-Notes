@@ -309,6 +309,8 @@ Space Complexity: O\(m\*n\) for visited boolean array
 > \(1\)是否visited過: visiteed\[i\]\[j\] == False --&gt; GOOD  
 > \(2\)是否為closed island: DFS closed == True --&gt; GOOD
 
+{% tabs %}
+{% tab title="Python" %}
 ```python
 def closedIsland(self, grid: List[List[int]]) -> int:
     width = len(grid[0])
@@ -344,6 +346,38 @@ def is_closed(self, grid, x, y, visited):
     # all dirctions must be satisfied then we can proceed as closed island.
     return up and right and down and left 
 ```
+{% endtab %}
+
+{% tab title="Java" %}
+```java
+public int closedIsland(int[][] grid) {
+    if (grid == null || grid.length == 0) return 0;
+    boolean[][] seen = new boolean[grid.length][grid[0].length];
+    int result = 0;
+    for (int i = 0; i < grid.length; ++i) {
+        for (int j = 0; j < grid[0].length; ++j) {
+            if (grid[i][j] == 0 && !seen[i][j] && isClosed(grid, seen, i, j)) {
+                result++;
+            }
+        }
+    }
+    return result;
+}
+
+private boolean isClosed(int[][] grid, boolean[][] seen, int row, int col) {
+    if (row < 0 || grid.length <= row || col < 0 || grid[0].length <= col) return false;
+    if (grid[row][col] == 1 || seen[row][col]) return true;
+    seen[row][col] = true;
+    
+    boolean up = isClosed(grid, seen, row - 1, col); 
+    boolean right = isClosed(grid, seen, row, col + 1);
+    boolean down = isClosed(grid, seen, row + 1, col); 
+    boolean left = isClosed(grid, seen, row, col - 1);
+    return up && right && down && left;
+}
+```
+{% endtab %}
+{% endtabs %}
 
 
 
