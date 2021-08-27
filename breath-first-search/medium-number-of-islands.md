@@ -202,7 +202,7 @@ def numIslands(self, grid: List[List[str]]) -> int:
     
     for i in range(rows):
         for j in range(cols):
-            if grid[i][j] == '1':
+            if grid[i][j] == '1':  #這裡已經不需要visited，直接修改grid
                 self.dfs(grid,i,j)
                 islands += 1
     return islands
@@ -211,7 +211,7 @@ def dfs(self, grid, x, y):
     # check boundary, should not go beyond
     if self.is_valid(grid,x,y):
         return 
-# methd 2
+# method 2
 #    # alternative way of checking boundary
 #    if not (0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] == '1'):
 #       return    
