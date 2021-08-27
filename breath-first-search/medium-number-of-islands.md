@@ -275,7 +275,71 @@ def dfs(self, grid, x, y, visited):
     
 ```
 
-## \(follow up\) 1254 Number of Closed Islands
+## \(follow up\) 1254 Number of Closed Islands   \(1128/29\)
+
+Given a 2D `grid` consists of `0s` \(land\) and `1s` \(water\).  An _island_ is a maximal 4-directionally connected group of `0s` and a _closed island_ is an island **totally** \(all left, top, right, bottom\) surrounded by `1s.`
+
+Return the number of _closed islands_.
+
+
+
+![](../.gitbook/assets/image%20%28111%29.png)
+
+```text
+Input: grid = [[1,1,1,1,1,1,1,0],[1,0,0,0,0,1,1,0],[1,0,1,0,1,1,1,0],[1,0,0,0,0,1,0,1],[1,1,1,1,1,1,1,0]]
+Output: 2
+Explanation: 
+Islands in gray are closed because they are completely surrounded by 
+water (group of 1s).
+```
+
+![](../.gitbook/assets/image%20%28110%29.png)
+
+```text
+Input: grid = [[0,0,1,0,0],[0,1,0,1,0],[0,1,1,1,0]]
+Output: 1
+```
+
+### 1. Recursive DFS + visited boolean array: O\(m\*n\) / O\(m\*n\) 
+
+Time Complexity: O\(m\*n\) for dfs search entire matrix  
+Space Complexity: O\(m\*n\) for visited boolean array
+
+```python
+def closedIsland(self, grid: List[List[int]]) -> int:
+    width = len(grid[0])
+    height = len(grid)
+    visited = [[False] * width for _ in range(height)]
+    ans = 0
+    
+    for i in range(height):
+        for j in range(width):
+            # 0 -> island found, 
+            # then we need to check surrounding
+            if grid[i][j] == 0 and visited[i][j] == False and self.is_closed(grid, i, j, visited) == True:
+                ans += 1
+    return ans
+    
+    
+def is_closed(self, grid, x, y, visited):
+
+    # boundary & recursion exit
+    if not (0 <= x < len(grid) and 0 <= y < len(grid[0])):
+        return False
+    # water found, move on to the next direction 
+    if grid[x][y] == 1 or visited[x][y]:
+        return True
+    
+    # check up, down, left, right  
+    visited[x][y] = True
+    up    = self.is_closed(grid, x+1, y, visited) #up
+    right = self.is_closed(grid, x, y+1, visited) #right
+    down  = self.is_closed(grid, x-1, y, visited) #down
+    left  = self.is_closed(grid, x, y-1, visited) #left
+    
+    # all dirctions must be satisfied then we can proceed as closed island.
+    return up and right and down and left 
+```
 
 
 
