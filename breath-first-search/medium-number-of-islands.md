@@ -134,6 +134,8 @@ def bfs(self, grid, x, y, visited):
             
 def valid_node(self, grid, x, y, visited):
     if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]):
+    # or like this 
+    # if not (0 <= x < len(grid) and 0 <= y < len(grid[0])):
         return False
     if (x, y) in visited:
         return False
