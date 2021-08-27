@@ -275,7 +275,7 @@ def dfs(self, grid, x, y, visited):
     
 ```
 
-## \(follow up\) 1254 Number of Closed Islands   \(1128/29\)
+## [\(follow up\) 1254 Number of Closed Islands   \(1128/29\)](https://leetcode.com/problems/number-of-closed-islands/)
 
 Given a 2D `grid` consists of `0s` \(land\) and `1s` \(water\).  An _island_ is a maximal 4-directionally connected group of `0s` and a _closed island_ is an island **totally** \(all left, top, right, bottom\) surrounded by `1s.`
 
