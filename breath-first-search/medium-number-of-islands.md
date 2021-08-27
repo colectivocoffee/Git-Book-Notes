@@ -1,4 +1,4 @@
-# \[Medium\] Number of Islands
+# \[Medium\] Number of Islands / Closed Islands
 
 ## [Number of Islands](https://leetcode.com/problems/number-of-islands/)  \(5875/202\)
 

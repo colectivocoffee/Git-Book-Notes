@@ -25,7 +25,7 @@
   * [\[Medium\] Word Ladder](breath-first-search/medium-word-ladder.md)
   * [\[Hard\] Alien Dictionary](breath-first-search/hard-alien-dictionary.md)
   * [\[Medium\] Clone Graph](breath-first-search/medium-clone-graph.md)
-  * [\[Medium\] Number of Islands](breath-first-search/medium-number-of-islands.md)
+  * [\[Medium\] Number of Islands / Closed Islands](breath-first-search/medium-number-of-islands.md)
 * [Backtracking](backtracking/README.md)
   * [\[Medium\] Palindrome Partitioning](backtracking/medium-palindrome-partitioning.md)
   * [\[Medium\] Generate Parentheses](backtracking/medium-generate-parentheses.md)
