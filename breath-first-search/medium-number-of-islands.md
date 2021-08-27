@@ -187,6 +187,7 @@ def dfs(self, grid, x, y, visited):
 
 ### 4. Recursive DFS: O\(m\*n\)/O\(m\*n\)
 
+把Recusion + DIRECTIONS 結合，讓code本身自己走。   
 跟Iterative DFS比，少了visited matrix來記走過路徑。
 
 ```python
@@ -210,8 +211,9 @@ def dfs(self, grid, x, y):
     # check boundary, should not go beyond
     if self.is_valid(grid,x,y):
         return 
+# methd 2
 #    # alternative way of checking boundary
-#    if x < 0 or x >= len(grid) or y < 0 or y >= len(grid[0]) or grid[x][y] == '0':
+#    if not (0 <= x < len(grid) and 0 <= y < len(grid[0]) and grid[x][y] == '1'):
 #       return    
         
     # mark (x,y) as visited
@@ -220,7 +222,8 @@ def dfs(self, grid, x, y):
     self.dfs(grid, x, y+1)
     self.dfs(grid, x-1, y)
     self.dfs(grid, x, y-1)    
-    
+
+# methd 1, separate method to check   
 def is_valid(self, grid, x, y):
     # -X--|[0---len(grid)]--X-|--X--
     # -X--|[0-----len(grid[0])]--X--
